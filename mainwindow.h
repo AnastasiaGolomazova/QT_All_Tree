@@ -6,6 +6,7 @@
 #include<QTextCodec>
 #include "area.h"
 #include "randtree.h"
+#include "BinTree.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -23,7 +24,5 @@ private slots:
 	void RadioButtonClick(bool checked);
 	void RadioButtonOnClick();
 	void ButtonAddOnClick(bool checked);
-private:
-	RandTree *baseTree_;
 };
 #endif // MAINWINDOW_H

@@ -23,6 +23,8 @@ SOURCES += \
     randtree.cpp
 
 HEADERS += \
+    BinTree.hpp \
+    abstracttree.h \
     area.h \
     figura.h \
     mainwindow.h \

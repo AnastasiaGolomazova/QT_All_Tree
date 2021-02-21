@@ -93,15 +93,27 @@ MainWindow::MainWindow(QWidget *parent)
 
 	codec = QTextCodec::codecForName("Windows-1251");
 	this->setWindowTitle(codec->toUnicode("Event handling"));
-	area = new Area(this);
 
-	//Инициализируем карандаш
-	area->myPen.setWidth(2);
-	area->myPen.setColor(Qt::red);
+    AbstractTree* tree = new BinTree();
+
+    tree->Add(12);
+    tree->Add(13);
+    tree->Add(4);
+    tree->Add(22);
+    tree->Add(55);
+    tree->Add(32);
+    tree->Add(43);
+    tree->Add(24);
+
+    area = new Area(this, tree);
+
+//	//Инициализируем карандаш
+//	area->myPen.setWidth(2);
+//	area->myPen.setColor(Qt::red);
 
 	btn = new QPushButton(codec->toUnicode("Close"), this);
 	QVBoxLayout *layoutPicture = new QVBoxLayout(this);
-	layoutPicture->addWidget(area);
+    layoutPicture->addWidget(area);
 	layoutPicture->addWidget(btn);
 	connect(btn, SIGNAL(clicked(bool)), this, SLOT(this->close()));
 
@@ -121,10 +133,6 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(radio3, &QRadioButton::clicked, this, &MainWindow::RadioButtonOnClick);
 	//---------------------------------------------------
 	connect(addBtn, &QPushButton::clicked, this,  &MainWindow::ButtonAddOnClick);
-
-	//Initializing Private Data
-
-	baseTree_ = nullptr;
 
 }
 

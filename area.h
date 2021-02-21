@@ -3,21 +3,21 @@
 #include <QWidget>
 #include <QPainter>
 #include "figura.h"
-#include"randtree.h"
+#include "abstracttree.h"
 
 //Область для рисования дерева, представляем виджетом
 class Area : public QWidget
 {
 	//int myTimer; // идентификатор таймера
 	//float alpha; // угол поворота
-	RandTree *baseTree;
+    AbstractTree *baseTree;
 public:
 	//Это просто для примера
 	QPen myPen;
 
-	Area(QWidget *parent = nullptr, RandTree *root = nullptr);
+    Area(QWidget *parent = nullptr, AbstractTree *root = nullptr);
 	~Area();
-	void setTree(RandTree *);
+    void setTree(AbstractTree *);
 	void DrawTree(QPen &tmpPen);
 
 protected:

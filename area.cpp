@@ -1,27 +1,18 @@
 #include "area.h"
 #include <QTimerEvent>
 
-Area::Area(QWidget *parent, RandTree *root): QWidget(parent)
+Area::Area(QWidget *parent, AbstractTree *root): QWidget(parent)
 {
 	//Это для примера. Иницализируем цвет карандаша по умолчанию
 
-	myPen.setWidth(2);
-	myPen.setColor(Qt::red);
+    myPen.setWidth(4);
+    myPen.setColor(Qt::white);
 
 
 	//Настравиваем нужные нам компоненты
 	// а именно
 
 	baseTree = root;
-	// Here  hardcode, just for some example
-
-	baseTree = new RandTree;
-	baseTree->Add(10);
-	baseTree->Add(20);
-	baseTree->Add(30);
-	baseTree->Add(11);
-	baseTree->Add(22);
-	baseTree->Add(33);
 
 	//myline = new MyLine(80, 100, 50);
 	//myrect = new MyRect(220, 100, 50);
@@ -110,7 +101,7 @@ void Area:: drawTreeRecursively(QPainter *canva, Node *root, int l, int r, int h
 		int x0 = centr_x - rr;
 		canva->drawEllipse(x0, h, rr * 2, rr * 2);
 
-		QString str = QString::number(root->key, 9);
+        QString str = QString::number(root->key);
 		canva->drawText(x0 + rr / 2, h + rr, str);
 
 		if (root->Left) {
