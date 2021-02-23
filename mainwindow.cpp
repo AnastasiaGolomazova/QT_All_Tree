@@ -47,12 +47,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 	QRadioButton *radio1 = new QRadioButton(tr("&Random Tree"), this);
 	QRadioButton *radio2 = new QRadioButton(tr("Search tree"), this);
-	QRadioButton *radio3 = new QRadioButton(tr("Balanced Tree"), this);
+    //QRadioButton *radio3 = new QRadioButton(tr("Balanced Tree"), this);
 	radio1->setChecked(true);
 
 	layOptions->addWidget(radio1, 1, Qt::AlignLeft);
 	layOptions->addWidget(radio2, 1, Qt::AlignLeft);
-	layOptions->addWidget(radio3, 1, Qt::AlignLeft);
+    //layOptions->addWidget(radio3, 1, Qt::AlignLeft);
 	layOptions->addStretch(1);
 	groupBoxB->setLayout(layOptions);
 
@@ -96,12 +96,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     AbstractTree* tree = new BinTree();
 
+    tree->Add(32);
     tree->Add(12);
     tree->Add(13);
     tree->Add(4);
     tree->Add(22);
     tree->Add(55);
-    tree->Add(32);
     tree->Add(43);
     tree->Add(24);
 
@@ -130,7 +130,7 @@ MainWindow::MainWindow(QWidget *parent)
 	setCentralWidget(splitter);
 	connect(radio1, &QRadioButton::toggled, this, &MainWindow::RadioButtonClick);
 	connect(radio2, &QRadioButton::toggled, this, &MainWindow::RadioButtonClick);
-	connect(radio3, &QRadioButton::clicked, this, &MainWindow::RadioButtonOnClick);
+    //connect(radio3, &QRadioButton::toggled, this, &MainWindow::RadioButtonOnClick);
 	//---------------------------------------------------
 	connect(addBtn, &QPushButton::clicked, this,  &MainWindow::ButtonAddOnClick);
 

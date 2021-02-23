@@ -17,15 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     area.cpp \
+    bintree.cpp \
     figura.cpp \
     main.cpp \
     mainwindow.cpp \
     randtree.cpp
 
 HEADERS += \
-    BinTree.hpp \
     abstracttree.h \
     area.h \
+    bintree.h \
     figura.h \
     mainwindow.h \
     randtree.h

@@ -6,7 +6,7 @@
 #include<QTextCodec>
 #include "area.h"
 #include "randtree.h"
-#include "BinTree.hpp"
+#include "bintree.h"
 
 class MainWindow : public QMainWindow
 {

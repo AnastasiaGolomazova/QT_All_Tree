@@ -1,30 +1,46 @@
 #include "randtree.h"
-//#include <stdio.h>
-#include<stdlib.h>
+#include <cstdlib>
+
 // рекурсивная функция удаления дерева
 void RandTree::DelTree(Node *&Root)
 {
 	if (Root == nullptr) {
-		return;
+        return;
 	}
 
-	if (Root->Left != nullptr) {
-		DelTree(Root->Left);
-	}
-
-	if (Root->Right != nullptr) {
-		DelTree(Root->Right);
-	}
+    DelTree(Root->Left);
+    DelTree(Root->Right);
 
 	delete Root;
 	Root = nullptr;
 }
+
+// рекурсивная функция удаления дерева
+bool RandTree::DelNode(Node *&Root, int item)
+{
+    if (Root == nullptr) {
+        return false;
+    }
+
+    if (Root->Left != nullptr) {
+        return DelTree(Root->Left);
+    }
+
+    if (Root->Right != nullptr) {
+        return DelTree(Root->Right);
+    }
+
+    delete Root;
+    Root = nullptr;
+    return true;
+}
+
 // рекурсивная функция добавления узла
 void RandTree::AddNode(Node *R, Node *N)
 {
 	if (rand() % 2) { //  решаем идти на лево или на право
 		if (R->Right) {
-			AddNode(R->Right, N);
+            AddNode(R->Right, N);
 		} else {
 			R->Right = N;
 		}
@@ -33,7 +49,7 @@ void RandTree::AddNode(Node *R, Node *N)
 
 	else {
 		if (R->Left) {
-			AddNode(R->Left, N);
+            AddNode(R->Left, N);
 		} else {
 			R->Left = N;
 		}
@@ -42,7 +58,7 @@ void RandTree::AddNode(Node *R, Node *N)
 // рекурсивная функция поиска узла
 bool RandTree::FindNode(Node *R, int key)
 {
-	if (!R) {
+    if (R == nullptr) {
 		return false;
 	}
 
@@ -50,19 +66,8 @@ bool RandTree::FindNode(Node *R, int key)
 		return true;
 	}
 
-	bool a = false;
-
-	if (R->Right)
-		if (FindNode(R->Right, key)) {
-			a = true;
-		}
-
-	if (R->Left)
-		if (FindNode(R->Left, key)) {
-			a = true;
-		}
-
-	return a;
+    return FindNode(R->Right, key);
+    return FindNode(R->Left, key);
 }
 // вспомогательная рекурсивная функция для вычисления высоты
 int RandTree::HeightNode(Node *Root)
@@ -84,45 +89,7 @@ int RandTree::HeightNode(Node *Root)
 		return LevelRight;
 	}
 }
-int RandTree::Min(Node *R, int m)
-{
-	if (R->Left == nullptr && R->Right == nullptr) {
-		return R->key;
-	}
 
-	int l, r;
-
-	if (R->Left) {
-		l = Min(R->Left, m);
-
-		if (l < m) {
-			m = l;
-		}
-	}
-
-	if (R->Right) {
-		r = Min(R->Right, m);
-		return r < m ? r : m;
-	}
-
-	return m;
-}
-int RandTree::Max(Node *R)
-{
-	if (R == nullptr) {
-		return 0;
-	}
-
-	int r, m;
-	m = Max(R->Left);
-
-	if (m < R->key) {
-		m = R->key;
-	}
-
-	r = Max(R->Right);
-	return r > m ? r : m;
-}
 // возвращает узел найденный по заданным параметрам
 Node *RandTree::Parents(int key, Node *R)
 {
@@ -151,19 +118,19 @@ Node *RandTree::Parents(int key, Node *R)
 	return tmp;
 }
 // функция копирует одно дерево в другое
-void RandTree::CopyRandTree(Node *ctr_v, Node *ctr_c)
+void RandTree::CopyTree(Node *ctr_v, Node *ctr_c)
 {
-	if (ctr_c->Left) {
-		Node *q = new Node(ctr_c->Left->key);
-		ctr_v->Left = q;
-		CopyRandTree(ctr_v->Left, ctr_c->Left);
-	}
+    if (ctr_c->Left) {
+        Node *q = new Node(ctr_c->Left->key);
+        ctr_v->Left = q;
+        CopyTree(ctr_v->Left, ctr_c->Left);
+    }
 
-	if (ctr_c->Right) {
-		Node *q = new Node(ctr_c->Right->key);
-		ctr_v->Right = q;
-		CopyRandTree(ctr_v->Right, ctr_c->Right);
-	}
+    if (ctr_c->Right) {
+        Node *q = new Node(ctr_c->Right->key);
+        ctr_v->Right = q;
+        CopyTree(ctr_v->Right, ctr_c->Right);
+    }
 }
 // конструктор копирования
 RandTree::RandTree(RandTree &Tree)
@@ -171,7 +138,7 @@ RandTree::RandTree(RandTree &Tree)
 	if (Tree.Root) {
 		Node *q = new Node(Tree.Root->key);
 		Root = q;
-		CopyRandTree(Root, Tree.Root);
+        CopyTree(Root, Tree.Root);
 	} else {
 		Root = nullptr;
 	}
@@ -193,7 +160,7 @@ RandTree RandTree:: operator = (RandTree &Tree)
 			Node *q = new Node(
 				Tree.Root->key); // происходит копирование головы, что бы можно было
 			Root = q;       //запустить рекурсивную функцию копирования
-			CopyRandTree(Root, Tree.Root);
+            CopyTree(Root, Tree.Root);
 		} else {
 			Root = nullptr;
 		}
@@ -207,12 +174,12 @@ bool RandTree::Add(int key)
 		// ключи не повторяются
 		return false;
 	} else {
-		if (Root != nullptr) {
-			Node *q = new Node(key);
+        Node *q = new Node(key);
+
+        if (Root != nullptr) {
 			AddNode(Root, q);
 		} else {
-			Node *q = new Node(key);
-			Root = q;
+            Root = q;
 		}
 	}
 
@@ -275,13 +242,4 @@ bool RandTree::Find(int key)
 	}
 
 	return FindNode(Root, key);
-}
-int RandTree::MinValue()
-{
-	int m = 0;
-	return Min(this->Root, m);
-}
-int RandTree::MaxValue()
-{
-	return Max(Root);
 }
