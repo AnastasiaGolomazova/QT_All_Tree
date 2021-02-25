@@ -7,9 +7,9 @@ class RandTree : public AbstractTree
 {
 
 private:
-    virtual bool DelTree(Node *&); // рекурсивная функция удаления дерева
-    virtual void DelNode(Node *&, int item); // рекурсивная функция удаления узла
-    virtual void AddNode(Node *, Node *); // рекурсивная функция добавления узла
+    virtual void DelTree(Node *&); // рекурсивная функция удаления дерева
+    virtual bool DelNode(Node *&, int item); // рекурсивная функция удаления узла
+    virtual void AddNode(Node *&, Node *); // рекурсивная функция добавления узла
     virtual bool FindNode(Node *, int); // рекурсивная функция поиска узла
     virtual int HeightNode(Node *R); // рекурсивная функция для вычисления высоты
 protected:

@@ -23,11 +23,11 @@ bool RandTree::DelNode(Node *&Root, int item)
     }
 
     if (Root->Left != nullptr) {
-        return DelTree(Root->Left);
+        DelTree(Root->Left);
     }
 
     if (Root->Right != nullptr) {
-        return DelTree(Root->Right);
+        DelTree(Root->Right);
     }
 
     delete Root;
@@ -36,7 +36,7 @@ bool RandTree::DelNode(Node *&Root, int item)
 }
 
 // рекурсивная функция добавления узла
-void RandTree::AddNode(Node *R, Node *N)
+void RandTree::AddNode(Node *&R, Node *N)
 {
 	if (rand() % 2) { //  решаем идти на лево или на право
 		if (R->Right) {

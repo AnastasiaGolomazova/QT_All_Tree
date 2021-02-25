@@ -1,12 +1,23 @@
-#include "mainwindow.h"
+#include <iostream>
+#include "bintree.h"
 
-#include <QApplication>
+using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
 
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	return a.exec();
+	BinTree tree;
+
+	tree.Add(57);
+	
+
+	tree.print2D();
+
+	tree.Del(57);
+
+	cout << "--------------------------" << endl;
+
+	tree.print2D();
+
+	return 0;
 }
