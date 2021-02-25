@@ -28,7 +28,7 @@ public:
 
 class AbstractTree
 {
-    virtual Node* DelNode(Node *&, int item) = 0;               // рекурсивная функция удаления узла
+    //virtual Node* DelNode(Node *&, int item) = 0;               // рекурсивная функция удаления узла
     virtual void DelTree(Node *&) = 0;               // рекурсивная функция удаления дерева
     virtual void AddNode(Node *&, Node *) = 0;// рекурсивная функция добавления узла
     virtual bool FindNode(Node *, int) = 0;  // рекурсивная функция поиска узла

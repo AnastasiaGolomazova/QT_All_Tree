@@ -5,7 +5,13 @@ BinTree::BinTree() {
 }
 
 bool BinTree::Del(int data) {
-	return DelNode(this->Root, data);
+    if(FindNode(this->Root, data)){
+        DelNode(this->Root, data);
+        return true;
+    }
+
+    return false;
+
 }
 
 void BinTree::CopyTree(Node* ctr_v, Node* ctr_c) {

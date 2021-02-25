@@ -1,3 +1,6 @@
+#ifndef BINTREE_H
+#define BINTREE_H
+
 #include "abstracttree.h"
 #include <cstdlib>
 #include <iostream>
@@ -7,7 +10,7 @@ using namespace std;
 class BinTree : public AbstractTree
 {
 	virtual Node* FindMin(Node*);
-    virtual Node* DelNode(Node *&, int item);            // рекурсивная функция удаления узла
+    Node* DelNode(Node *&, int item);            // рекурсивная функция удаления узла
     virtual void DelTree(Node *&);               // рекурсивная функция удаления дерева
     virtual void AddNode(Node *&, Node *);// рекурсивная функция добавления узла
     virtual bool FindNode(Node *, int);  // рекурсивная функция поиска узла
@@ -67,3 +70,6 @@ public:
 		print2DUtil(this->Root, 0);
 	}
 };
+
+
+#endif

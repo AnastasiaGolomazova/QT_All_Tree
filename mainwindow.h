@@ -23,6 +23,6 @@ protected:
 private slots:
 	void RadioButtonClick(bool checked);
 	void RadioButtonOnClick();
-	void ButtonAddOnClick(bool checked);
+    void ButtonAddOnClick();
 };
 #endif // MAINWINDOW_H

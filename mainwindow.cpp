@@ -155,7 +155,7 @@ void MainWindow::RadioButtonOnClick()
 	this->statusBar()->showMessage("Choosen Tree: JustClik");
 }
 
-void MainWindow::ButtonAddOnClick(bool checked)
+void MainWindow::ButtonAddOnClick()
 {
 
 	QPen tmpPen;

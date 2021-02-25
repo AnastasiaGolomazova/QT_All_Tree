@@ -15,26 +15,6 @@ void RandTree::DelTree(Node *&Root)
 	Root = nullptr;
 }
 
-// рекурсивная функция удаления дерева
-bool RandTree::DelNode(Node *&Root, int item)
-{
-    if (Root == nullptr) {
-        return false;
-    }
-
-    if (Root->Left != nullptr) {
-        DelTree(Root->Left);
-    }
-
-    if (Root->Right != nullptr) {
-        DelTree(Root->Right);
-    }
-
-    delete Root;
-    Root = nullptr;
-    return true;
-}
-
 // рекурсивная функция добавления узла
 void RandTree::AddNode(Node *&R, Node *N)
 {
@@ -66,8 +46,7 @@ bool RandTree::FindNode(Node *R, int key)
 		return true;
 	}
 
-    return FindNode(R->Right, key);
-    return FindNode(R->Left, key);
+    return FindNode(R->Right, key) || FindNode(R->Left, key);
 }
 // вспомогательная рекурсивная функция для вычисления высоты
 int RandTree::HeightNode(Node *Root)
