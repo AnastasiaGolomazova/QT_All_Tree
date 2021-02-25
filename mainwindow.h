@@ -7,6 +7,7 @@
 #include "area.h"
 #include "randtree.h"
 #include "bintree.h"
+#include "abstracttree.h"
 
 class MainWindow : public QMainWindow
 {
@@ -20,6 +21,8 @@ protected:
 	QTextCodec *codec;
 	Area *area;  // область отображения рисунка
 	QPushButton *btn;
+    AbstractTree* tree;
+
 private slots:
 	void RadioButtonClick(bool checked);
 	void RadioButtonOnClick();

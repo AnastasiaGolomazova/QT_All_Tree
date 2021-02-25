@@ -94,7 +94,7 @@ MainWindow::MainWindow(QWidget *parent)
 	codec = QTextCodec::codecForName("Windows-1251");
 	this->setWindowTitle(codec->toUnicode("Event handling"));
 
-    AbstractTree* tree = new BinTree();
+    tree = new BinTree();
 
     tree->Add(32);
     tree->Add(12);
@@ -157,6 +157,8 @@ void MainWindow::RadioButtonOnClick()
 
 void MainWindow::ButtonAddOnClick()
 {
+
+    tree->Add(567);
 
 	QPen tmpPen;
 	tmpPen.setWidth(2);
