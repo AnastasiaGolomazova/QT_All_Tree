@@ -1,20 +1,6 @@
 #include "randtree.h"
 #include <cstdlib>
 
-// рекурсивная функция удаления дерева
-void RandTree::DelTree(Node *&Root)
-{
-	if (Root == nullptr) {
-        return;
-	}
-
-    DelTree(Root->Left);
-    DelTree(Root->Right);
-
-	delete Root;
-	Root = nullptr;
-}
-
 // рекурсивная функция добавления узла
 void RandTree::AddNode(Node *&R, Node *N)
 {

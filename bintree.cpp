@@ -1,7 +1,7 @@
 #include "bintree.h"
 
 BinTree::BinTree() {
-
+    this->Root = nullptr;
 }
 
 bool BinTree::Del(int data) {
@@ -26,19 +26,6 @@ void BinTree::CopyTree(Node* ctr_v, Node* ctr_c) {
         ctr_v->Right = q;
         CopyTree(ctr_v->Right, ctr_c->Right);
     }
-}
-
-void BinTree::DelTree(Node *&root){
-    
-	if (Root == nullptr) {
-        return;
-	}
-
-    DelTree(root->Left);
-    DelTree(root->Right);
-
-	delete Root;
-	Root = nullptr;
 }
 
 Node* BinTree::DelNode(Node *& root, int data){

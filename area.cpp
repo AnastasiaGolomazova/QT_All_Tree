@@ -88,7 +88,7 @@ void Area::DrawTree(QPen &tmpPen)
 	painter.setFont(font);
 	//painter.setFont(QFont("Arial", 20));
 
-	painter.drawText(rect(), Qt::AlignCenter, "Qt");
+    //painter.drawText(rect(), Qt::AlignCenter, "Qt");
 	drawTreeRecursively(&painter, baseTree->getRoot(), 0, painter.device()->width(), 55);
 
 

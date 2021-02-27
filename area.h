@@ -17,7 +17,9 @@ public:
 
     Area(QWidget *parent = nullptr, AbstractTree *root = nullptr);
 	~Area();
-    void setTree(AbstractTree *);
+    void setTree(AbstractTree *tree){
+        baseTree = tree;
+    }
 	void DrawTree(QPen &tmpPen);
 
 protected:

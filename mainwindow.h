@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include<QTextCodec>
+#include <QLineEdit>
 #include "area.h"
 #include "randtree.h"
 #include "bintree.h"
@@ -22,10 +23,17 @@ protected:
 	Area *area;  // область отображения рисунка
 	QPushButton *btn;
     AbstractTree* tree;
-
+    QLineEdit *countEdit;
+    QLineEdit *valueEdit;
+    void updateTree();
 private slots:
-	void RadioButtonClick(bool checked);
+    void RandomTreeButtonClick(bool checked);
+    void BinTreeButtonClick(bool checked);
 	void RadioButtonOnClick();
     void ButtonAddOnClick();
+    void ButtonDelOnClick();
+    void ButtonFndOnClick();
+    void ButtonClrOnClick();
+    void ButtonCreateOnClick();
 };
 #endif // MAINWINDOW_H

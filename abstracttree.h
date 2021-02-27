@@ -28,13 +28,23 @@ public:
 
 class AbstractTree
 {
-    //virtual Node* DelNode(Node *&, int item) = 0;               // рекурсивная функция удаления узла
-    virtual void DelTree(Node *&) = 0;               // рекурсивная функция удаления дерева
     virtual void AddNode(Node *&, Node *) = 0;// рекурсивная функция добавления узла
     virtual bool FindNode(Node *, int) = 0;  // рекурсивная функция поиска узла
     virtual int HeightNode(Node *R) = 0;   // функция для вычисления высоты
 
 protected:
+    virtual void DelTree(Node *& root){      // рекурсивная функция удаления дерева
+        if (root == nullptr) {
+            return;
+        }
+
+        this->DelTree(root->Left);
+        this->DelTree(root->Right);
+
+        delete root;
+        root = nullptr;
+    }
+
     virtual void Min(Node *R, int& item)
     {
         if(R == nullptr){
@@ -63,10 +73,13 @@ protected:
     virtual Node *Parents(int, Node *) = 0;         // возвращает РОДИТЕЛЯ
 
 public:
+    virtual ~AbstractTree(){}
     virtual bool Add(int) = 0;  //Метод добавления ключа в дерево
     virtual bool Del(int) = 0;  //Метод удаления ключа из дерева
     virtual bool Find(int) = 0; //Метод поиска ключа в дереве
-
+    virtual void ClearTree(){
+        this->DelTree(Root);
+    }
     virtual int MinValue()
     {
         int item = INT_MAX;
